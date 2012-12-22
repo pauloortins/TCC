@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Sun Nov 20 00:53:19 BRST 2011:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0133-bee4-67d7-000002edcbc8 
+on database directory D:\EclipseWorSpace\SCMPlugin\myDB  with class loader sun.misc.Launcher$AppClassLoader@77cde100 
+Loaded from file:/D:/EclipseWorSpace/SCMPlugin/lib/derby.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_24-b07
+user.dir=D:\EclipseWorSpace\SCMPlugin
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

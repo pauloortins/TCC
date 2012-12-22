@@ -1,0 +1,84 @@
+package scmplugin.wizard;
+
+import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Text;
+
+import scmaccess.model.objects.InfoSCM;
+import scmaccess.model.objects.SmeProperties;
+
+public class ScmDescriptionPage extends WizardPage implements Listener {
+
+	public static final String PAGE_Title = "Repository Description";
+	private Text nameSmeText;
+
+	public ScmDescriptionPage() {
+		super("Page 1", PAGE_Title, null);
+		setDescription("Descritption of the Repository which will be analized.");
+	}
+
+	@Override
+	public void createControl(Composite parent) {
+		Composite topLevel = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout(2, false);
+
+		topLevel.setLayout(layout);
+
+		Label loUrlLabel = new Label(topLevel, SWT.LEFT);
+		loUrlLabel.setText("Name:");
+
+		this.nameSmeText = new Text(topLevel, SWT.BORDER | SWT.LEFT);
+		GridData nameSmeData = new GridData(300, 16);
+
+		this.nameSmeText.setLayoutData(nameSmeData);
+		createLine(topLevel, 2);
+		setControl(topLevel);
+		addListeners();
+	}
+
+	private void createLine(Composite parent, int ncol) {
+		Label line = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL
+				| SWT.BOLD);
+		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+		gridData.horizontalSpan = ncol;
+		line.setLayoutData(gridData);
+	}
+
+	public void addListeners() {
+		this.nameSmeText.addListener(SWT.KeyUp, this);
+	}
+
+	public boolean canFlipToNextPage() {
+		return isTextNonEmpty(nameSmeText);
+	}
+	
+	public IWizardPage getNextPage(){
+		ScmWizardPage page = ((SmeWizard) getWizard()).scmPage;
+		InfoSCM info = ((SmeWizard) getWizard()).info;
+		SmeProperties sme = info.getSme();
+		sme.setName(this.nameSmeText.getText());
+		return page;
+	}
+
+	private static boolean isTextNonEmpty(Text t) {
+		String s = t.getText();
+		if ((s != null) && (s.trim().length() > 0))
+			return true;
+		return false;
+	}
+
+	@Override
+	public void handleEvent(Event event) {
+		if (event.widget == nameSmeText){
+			getWizard().getContainer().updateButtons();
+		} 	
+	}
+
+}

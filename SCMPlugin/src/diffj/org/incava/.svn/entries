@@ -1,0 +1,62 @@
+10
+
+dir
+35
+file://c:/Users/paulo/svnrepositorio/SCMPlugin/src/diffj/org/incava
+file://c:/Users/paulo/svnrepositorio
+
+
+
+2011-08-20T23:47:49.440000Z
+32
+paulo.ortins
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f18ae0c3-afa4-6a48-a858-5709cda9cde7
+
+
+
+
+
+
+0
+
+analysis
+dir
+
+diffj
+dir
+
+io
+dir
+
+jagol
+dir
+
+java
+dir
+
+lang
+dir
+
+log
+dir
+
+qualog
+dir
+
+util
+dir
+
